@@ -13,7 +13,7 @@
   <meta property="og:image" content="">
 
   <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" href="">enter icon link here
+  <link rel="icon" href="">
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
@@ -27,17 +27,23 @@
 </head>
 
 <body>
-  <div id="svg-container">
-    <!-- The SVG will be loaded dynamically -->
-</div>
+   <!-- Paste your full SVG content here -->
+  <svg id="basement-scene" width="800" height="600" viewBox="0 0 800 600">
+    <!-- Example elements (modify according to your actual SVG IDs) -->
+    <g id="Barrel">
+        <rect x="100" y="300" width="50" height="80" fill="brown"/>
+    </g>
+    <g id="Rope">
+        <line x1="200" y1="50" x2="200" y2="200" stroke="tan" stroke-width="5"/>
+    </g>
+    <g id="Knife">
+        <polygon points="400,150 420,160 410,180 390,170" fill="silver"/>
+    </g>
+    <g id="Light">
+        <circle cx="600" cy="100" r="20" fill="yellow"/>
+    </g>
+  </svg>
 
-<script src="script.js"></script>
-
-
-
-
-
-  
   <script src="js/main.js"></script>
 </body>
 </html>
