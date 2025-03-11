@@ -3,7 +3,17 @@ html {
     font-family: "Montserrat";
 }
 
-body{
-    color: #000000;
-    background-color: #ffffff;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #222;
+    margin: 0;
+}
+
+svg {
+    width: 80%;
+    height: auto;
+    display: block;
 }
