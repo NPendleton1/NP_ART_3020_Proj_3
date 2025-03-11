@@ -11,8 +11,13 @@ body {
     margin: 0;
 }
 
+#svg-container {
+    width: 100vw;
+    height: auto;
+}
+
 svg {
-    width: 80%;
+    width: 100%;
     height: auto;
     display: block;
 }
