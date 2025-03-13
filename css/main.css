@@ -21,11 +21,4 @@ svg {
     height: auto;
     display: block;
 }
-
-.explore{
-    position: absolute;
-    top: 11vh;
-    right: 22vw;
-    color: rgb(231, 230, 229);
-    text-decoration: wavy;
-}
+ 

@@ -1,11 +1,65 @@
-// Select elements directly
+
 const barrel = document.getElementById("Barrel");
 const rope = document.getElementById("Rope");
 const knife = document.getElementById("Knife");
 const light = document.getElementById("Light");
 const sign = document.getElementById("Sign");
+const lightframe = document.getElementById("LightFrame");
+const key = document.getElementById("Key");
+const chestlidopen = document.getElementById("ChestLidOpen");
+const chestlidclosed = document.getElementById("ChestLidClosed");
 
-// Barrel: Rattles on click
+key.style.opacity = "0";
+chestlidopen.style.opacity = "0"
+
+knife.addEventListener("click", () => {
+    const knifeAnimation = knife.animate([
+        { transform: "translate3d(170px, -750px, 0px)" },
+    ], {
+        duration: 800,
+        iterations: 1,
+        fill: "forwards",
+        easing: "ease-in",
+        easing: "ease-out"
+    });
+
+    knifeAnimation.onfinish = () => {
+
+        const lightframeAnimation = lightframe.animate([
+            { transform: "translateY(0px)",},
+            { transform: "translateY(600px)",}
+        ], {
+            duration: 100,
+            fill: "forwards",
+            easing: "ease-in"
+        });
+
+        light.animate([
+            { opacity: 1 },
+            { opacity: 0 }
+        ], {
+            duration: 10,
+            fill: "forwards"
+        });
+        knife.animate([
+            { opacity: 1 },
+            { opacity: 0 }
+        ], {
+            duration: 10,
+            fill: "forwards"
+        });
+        key.animate([
+            { opacity: 0 },
+            { opacity: 1 }
+        ], {
+            duration: 100,
+            fill: "forwards"
+        });
+    };
+});
+
+
+
 barrel.addEventListener("click", () => {
     barrel.animate([
         { transform: "translateX(0px)" },
@@ -20,7 +74,7 @@ barrel.addEventListener("click", () => {
     });
 });
 
-// Rope: Slides to the right on click
+
 rope.addEventListener("click", () => {
     rope.animate([
         { transform: "translateX(0px)" },
@@ -31,18 +85,7 @@ rope.addEventListener("click", () => {
     });
 });
 
-// Knife: Bobs diagonally down and back on hover
-knife.addEventListener("click", () => {
-    knife.animate([
-        { transform: "translate(0, 0)" },
-        { transform: "translate(10px, 20px)" },
-    ], {
-        duration: 600,
-        iterations: 1
-    });
-});
 
-// Light: Flickers opacity on click
 light.addEventListener("click", () => {
     light.animate([
         { opacity: 1 },
@@ -55,6 +98,7 @@ light.addEventListener("click", () => {
         iterations: 1
     });
 });
+
 
 if (sign) {
     sign.addEventListener("click", () => {
@@ -79,3 +123,24 @@ if (sign) {
         };
     });
 }
+
+
+key.addEventListener("click", () => {
+    const knifeAnimation = key.animate([
+        { transform: "translate3d(373px, -170px, 0px)" },
+    ], {
+        duration: 300,
+        iterations: 1,
+        fill: "forwards",
+        easing: "ease-in",
+        easing: "ease-out"
+    });
+});
+
+key.addEventListener("click", () => {
+    setTimeout(() => {
+        chestlidclosed.style.opacity = "0";
+        chestlidopen.style.opacity = "1";
+    }, 500);
+});
+
