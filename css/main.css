@@ -44,3 +44,7 @@ svg {
     pointer-events: none;
 }
 
+#Barrel, #Rope, #Knife, #Light, #Sign, #Key {
+    cursor: pointer;
+}
+

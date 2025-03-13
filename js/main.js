@@ -159,6 +159,8 @@ key.addEventListener("click", () => {
     };
 });
 
+
+//ai generated confetti effect
 function createConfetti() {
     const confettiCount = 250;
     const colors = ["red", "blue", "yellow", "green", "purple", "orange", "pink"];
@@ -177,8 +179,6 @@ function createConfetti() {
         }, 4000);
     }
 }
-
-
 
 
 let ropePulse = setInterval(pulseRope, 3000);
