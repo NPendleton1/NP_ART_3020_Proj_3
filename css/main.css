@@ -21,4 +21,26 @@ svg {
     height: auto;
     display: block;
 }
- 
+
+.darkscene{
+    background-color: black;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.confetti {
+    position: fixed;
+    top: 0;
+    width: 15px;
+    height: 10px;
+    opacity: 0.8;
+    pointer-events: none;
+}
+

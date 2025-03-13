@@ -8,6 +8,7 @@ const lightframe = document.getElementById("LightFrame");
 const key = document.getElementById("Key");
 const chestlidopen = document.getElementById("ChestLidOpen");
 const chestlidclosed = document.getElementById("ChestLidClosed");
+const darkscene = document.querySelector(".darkscene");
 
 key.style.opacity = "0";
 chestlidopen.style.opacity = "0"
@@ -97,6 +98,16 @@ light.addEventListener("click", () => {
         duration: 500,
         iterations: 1
     });
+
+    darkscene.animate([
+        { opacity: 0 },
+        { opacity: 0.9 },
+        { opacity: 0 }, 
+        { opacity: 0.9 },
+    ], {
+        duration: 500,
+        iterations: 1
+    });
 });
 
 
@@ -126,21 +137,71 @@ if (sign) {
 
 
 key.addEventListener("click", () => {
-    const knifeAnimation = key.animate([
+    const keyAnimation = key.animate([
         { transform: "translate3d(373px, -170px, 0px)" },
     ], {
         duration: 300,
         iterations: 1,
         fill: "forwards",
-        easing: "ease-in",
-        easing: "ease-out"
+        easing: "ease-in-out"
     });
+
+    keyAnimation.onfinish = () => {
+        setTimeout(() => {
+            chestlidclosed.style.opacity = "0";
+            chestlidopen.style.opacity = "1";
+            key.style.opacity = "0";
+
+
+            createConfetti();
+
+        }, 500);
+    };
 });
 
-key.addEventListener("click", () => {
-    setTimeout(() => {
-        chestlidclosed.style.opacity = "0";
-        chestlidopen.style.opacity = "1";
-    }, 500);
+function createConfetti() {
+    const confettiCount = 250;
+    const colors = ["red", "blue", "yellow", "green", "purple", "orange", "pink"];
+
+    for (let i = 0; i < confettiCount; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animation = `fall ${Math.random() * 3 + 2}s ease-out forwards`;
+        
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 4000);
+    }
+}
+
+
+
+
+let ropePulse = setInterval(pulseRope, 3000);
+
+function pulseRope() {
+    rope.animate([
+        { opacity: 1 },
+        { opacity: 0.6 },
+        { opacity: 1 }
+    ], {
+        duration: 1000,
+        iterations: 2
+    });
+}
+
+rope.addEventListener("click", () => {
+    clearInterval(ropePulse);
+    rope.style.opacity = "1";
+    rope.style.pointerEvents = "none";
 });
+
+
+
+
+
 
