@@ -9,6 +9,7 @@ const key = document.getElementById("Key");
 const chestlidopen = document.getElementById("ChestLidOpen");
 const chestlidclosed = document.getElementById("ChestLidClosed");
 const darkscene = document.querySelector(".darkscene");
+const popupOverlay = document.getElementById("popup-overlay");
 
 key.style.opacity = "0";
 chestlidopen.style.opacity = "0"
@@ -131,6 +132,9 @@ if (sign) {
 
         animation.onfinish = () => {
             sign.style.transform = "rotate(-90deg)";
+
+            sign.style.pointerEvents = "none";
+            sign.style.cursor = "default";
         };
     });
 }
@@ -152,34 +156,19 @@ key.addEventListener("click", () => {
             chestlidopen.style.opacity = "1";
             key.style.opacity = "0";
 
+            setTimeout(() => {
+                popupOverlay.classList.add("show-popup");
+            }, 500);
 
-            createConfetti();
+            key.style.pointerEvents = "none";
+            key.style.cursor = "default";
 
         }, 500);
     };
 });
-
-
-//ai generated confetti effect
-function createConfetti() {
-    const confettiCount = 250;
-    const colors = ["red", "blue", "yellow", "green", "purple", "orange", "pink"];
-
-    for (let i = 0; i < confettiCount; i++) {
-        let confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = `${Math.random() * 100}vw`;
-        confetti.style.animation = `fall ${Math.random() * 3 + 2}s ease-out forwards`;
-        
-        document.body.appendChild(confetti);
-
-        setTimeout(() => {
-            confetti.remove();
-        }, 4000);
-    }
-}
-
+popupOverlay.addEventListener("click", () => {
+    popupOverlay.classList.remove("show-popup");
+});
 
 let ropePulse = setInterval(pulseRope, 3000);
 
@@ -199,9 +188,3 @@ rope.addEventListener("click", () => {
     rope.style.opacity = "1";
     rope.style.pointerEvents = "none";
 });
-
-
-
-
-
-
